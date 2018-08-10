@@ -1,7 +1,4 @@
-// a plugin to randomize Edge servers in a Wowza loadbalancer Origin/Edge scenario
-// just compile to a .jar, add to the lib folder and add this one to the Server or VHost.xml as per the documentation
-// then just add the ServerExtensionRandomizer to always return a random Edge server if all other decisions return more than one server in the end
-package com.wowza.plugin.xxx;
+package com.wowza.plugin.rgardien;
 
 import java.util.ArrayList;
 import java.util.HashMap; 
