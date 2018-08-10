@@ -4,9 +4,8 @@ The **WowzaLoadBalancerServerRandomizer** is a load balancer decision extension 
 ## Prerequisites
 Wowza Streaming Engine 4.0.0 or later is required.
 
-## Usage
-Define your own class name (replace xxx), and compile the source into a .jar.
-Upload your .jar to the Wowza lib folder.
-Add a custom variable **loadbalanceServerProcessAddClasses** to the VHosts or Server.xml file to initialise the module.
-Add the decision **ServerExtensionRandomizer** to your list of decisions where you want it (probably at the end).
-Restart Wowza and enjoy!
+## Installation and compilation
+* Upload the .jar file to the Wowza lib folder.
+* Add a custom property to your Server.xml or VHost.xml file (where you have configured the load balancer), the Name of the property is `loadbalanceServerProcessAddClasses`, the type is `String` and the Value is `com.wowza.plugin.rgardien.LoadBalancerServerRandomizerame`.
+* Add the decision **ServerExtensionRandomizer** to your `loadbalanceServerDecisionOrder` property where you want it (probably at the end).
+* Restart Wowza and enjoy!
