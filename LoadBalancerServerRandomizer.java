@@ -1,8 +1,7 @@
 package com.wowza.plugin.rgardien;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap; 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -19,8 +18,8 @@ public class LoadBalancerServerRandomizer implements ILoadBalancerServerDataExte
 	private final String COMPONENT_NAME = "ServerExtensionRandomizer"; 
 	private Logger logger = null;
 	
-	public void init(WMSProperties props) {
-	}
+	public void init(WMSProperties props) { 
+	} 
 	
 	public void setDebug(boolean debug) {
 		this.debug = debug; 
@@ -29,10 +28,10 @@ public class LoadBalancerServerRandomizer implements ILoadBalancerServerDataExte
 	public boolean getDebug() {
 		return this.debug; 
 	}
-	
+	 
 	public void setLogger(Logger log) {
 		this.logger = log; 
-	}
+	} 
 	
 	public Logger getLogger() {
 		return this.logger;
@@ -62,17 +61,10 @@ public class LoadBalancerServerRandomizer implements ILoadBalancerServerDataExte
 		
 		if (!getActive()) 
 			return clientList;
+
+		// Shuffle the list
+		Collections.shuffle(clientList, new Random());
 		
-		// output clients
-		List<ILoadBalancerServerClient> outputClients = new ArrayList<ILoadBalancerServerClient>();
-		
-		// random one from clientList
-	    	Random rand = new Random();
-	    	ILoadBalancerServerClient randomElement = clientList.get(rand.nextInt(clientList.size()));
-		
-		// add to output clients
-		outputClients.add(randomElement);
-		
-		return outputClients; 
+		return clientList;
 	}
 }
